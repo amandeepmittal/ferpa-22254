@@ -24,24 +24,24 @@ export class _Settings extends React.Component {
     facebookEnabled: true,
   };
 
-  onPushNotificationsSettingChanged = value => {
+  onPushNotificationsSettingChanged = (value) => {
     this.setState({sendPush: value});
   };
 
-  onRefreshAutomaticallySettingChanged = value => {
+  onRefreshAutomaticallySettingChanged = (value) => {
     this.setState({shouldRefresh: value});
   };
 
-  gotoURL = url => {
+  gotoURL = (url) => {
     Linking.canOpenURL(url)
-      .then(supported => {
+      .then((supported) => {
         if (!supported) {
           console.log("Can't handle url: " + url);
         } else {
           return Linking.openURL(url);
         }
       })
-      .catch(err => console.error('An error occurred', err));
+      .catch((err) => console.error('An error occurred', err));
   };
 
   render = () => (
@@ -76,13 +76,12 @@ export class _Settings extends React.Component {
             onValueChange={this.onPushNotificationsSettingChanged}
             value={this.state.sendPush}
           />
-          
         </View>
         <View style={this.props.themedStyle.row}>
           <Text category="s1" style={this.props.themedStyle.text}>
             Refresh Automatically
           </Text>
-    
+
           <Switch
             style={this.props.themedStyle.switch}
             onValueChange={this.onRefreshAutomaticallySettingChanged}
@@ -133,7 +132,7 @@ export class _Settings extends React.Component {
   );
 }
 
-export default Settings = withStyles(_Settings, theme => ({
+export default Settings = withStyles(_Settings, (theme) => ({
   container: {
     backgroundColor: theme['color-basic-100'],
   },
